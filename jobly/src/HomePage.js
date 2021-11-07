@@ -13,10 +13,10 @@ function HomePage() {
                 <h4>All the jobs in one, convenient place</h4>
             </div>
             <div className="Login-Signup">
-                <NavLink class="btn" exact to="/login">
+                <NavLink className="btn" exact to="/login">
                     <Button className="primary">Login </Button>
                 </NavLink>
-                <NavLink class="btn" exact to="/signup">
+                <NavLink className="btn" exact to="/signup">
                     <Button className="primary">SignUp</Button>
                 </NavLink>
             </div>

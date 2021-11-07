@@ -1,0 +1,21 @@
+.Card {
+  text-align: center;
+  width: 50rem;
+  margin-left: 20rem;
+  padding-top: 15px;
+  margin-bottom: 1rem;
+  box-shadow: lightslategrey;
+  margin-top: 1rem;
+  word-break: break-word;
+  font-family: serif;
+  background-color: whitesmoke;
+  max-height: 250px;
+  padding: 0.7rem;
+  height: 100px;
+  padding-top: 1.5rem;
+  padding-bottom: 0.1rem;
+}
+
+.CardTitle {
+  font-weight: bold;
+}
