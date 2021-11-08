@@ -3,6 +3,7 @@ import { Card, CardText, CardBody, CardTitle, Button } from 'reactstrap';
 import "./JobCard.css";
 
 function JobCard({ jobList }) {
+    console.log(jobList);
     return (
 
         <div>

@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Companies from './Companies';
+import CompaniesDetail from './CompaniesDetail';
 import HomePage from './HomePage';
 import Jobs from './Jobs';
 import Login from './Login';
@@ -20,8 +21,8 @@ function App() {
             <Route exact path="/companies">
               <Companies />
             </Route>
-            <Route exact path="/companies/:name">
-              <Companies />
+            <Route exact path="/companies/:handle">
+              <CompaniesDetail />
             </Route>
             <Route exact path="/jobs">
               <Jobs />
