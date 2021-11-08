@@ -19,3 +19,12 @@
 .CardTitle {
   font-weight: bold;
 }
+
+.Card a {
+  color: black;
+  text-decoration: none;
+}
+
+.Card a :hover {
+  color: rgb(47, 179, 240);
+}

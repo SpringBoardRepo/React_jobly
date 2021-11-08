@@ -1,18 +1,9 @@
-import { useEffect, useState } from "react";
-import JoblyApi from "./api"
+
 import CompanyCard from "./CompanyCard";
 
-function CompaniesList() {
+function CompaniesList({ cList }) {
 
-    const [cList, setCList] = useState([]);
 
-    useEffect(() => {
-        async function getCompanyList() {
-            const response = await JoblyApi.getCompaniesList();
-            setCList(response.companies);
-        }
-        getCompanyList();
-    }, []);
     return (
         <>
             <CompanyCard cList={cList} />

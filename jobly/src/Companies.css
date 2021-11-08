@@ -5,3 +5,13 @@
   width: 50%;
   height: 40px;
 }
+
+button {
+  text-align: center;
+  color: white;
+  background-color: rgb(66, 182, 218);
+  border: none;
+  width: 5rem;
+  height: 3rem;
+  border-radius: 10px;
+}

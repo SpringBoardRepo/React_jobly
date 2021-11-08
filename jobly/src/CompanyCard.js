@@ -2,10 +2,8 @@
 import { Card, CardText, CardBody, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import "./CompanyCard.css"
-import { useEffect, useState } from 'react';
-import JoblyApi from './api';
-function CompanyCard({ cList }) {
 
+function CompanyCard({ cList }) {
     // const [companyHandle, setCompanyHandle] = useState([]);
 
     // useEffect(() => {
