@@ -1,0 +1,31 @@
+.JobCard {
+  text-align: initial;
+  width: 50rem;
+  margin-left: 20rem;
+  padding-top: 15px;
+  margin-bottom: 1rem;
+  box-shadow: lightslategrey;
+  margin-top: 1rem;
+  font-family: serif;
+  background-color: whitesmoke;
+  padding: 0.7rem;
+  height: 170px;
+  padding-top: 1.5rem;
+  padding-bottom: 0.1rem;
+}
+
+.CardTitle {
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.applyBtn {
+  text-align: center;
+  margin-left: 45rem;
+  color: white;
+  background-color: red;
+  border: none;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 10px;
+}
