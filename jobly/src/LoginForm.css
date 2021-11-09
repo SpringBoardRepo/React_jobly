@@ -1,0 +1,26 @@
+.LoginForm input {
+  margin-left: 42%;
+  display: block;
+  width: 20rem;
+  height: 2rem;
+}
+
+.LoginForm label {
+  margin-left: 42%;
+  display: block;
+  font-size: larger;
+  margin-top: 1rem;
+}
+
+.Loginbtn {
+  text-align: center;
+  color: white;
+  background-color: rgb(66, 182, 218);
+  border: none;
+  width: 5 rem;
+  height: 3 rem;
+  border-radius: 10 px;
+  margin-left: 50%;
+  margin-top: 1rem;
+  cursor: pointer;
+}
