@@ -38,14 +38,30 @@ class JoblyApi {
         return res.company;
     }
 
+    //get all companies or get a company by name
     static async getCompaniesList(name) {
 
         let res = await this.request('companies', { name });
         return res;
     }
+    //Get all the jobs
     static async getJobsList() {
 
         let res = await this.request('jobs');
+        return res;
+    }
+
+    //Get token from Login from username password
+
+    static async login(data) {
+        let res = await this.request('auth/token', data, "post");
+        return res;
+    }
+
+    //register a new user
+
+    static async signup(data) {
+        let res = await this.request('auth/register', data, "post");
         return res;
     }
 }
