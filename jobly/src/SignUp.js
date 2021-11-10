@@ -1,29 +1,37 @@
 
 import { useState } from "react";
-import { Button, Card, Form, FormGroup, Label } from 'reactstrap';
+import { useHistory } from "react-router";
+import { Button, Label } from 'reactstrap';
 import './LoginForm.css'
 
-function SignUp() {
+function SignUp({ signUp }) {
 
-    const [signUpForm, setSignUpForm] = useState({
+    const history = useHistory();
+    const [signUpFormData, setSignUpFormData] = useState({
         username: "",
         password: "",
         email: "",
         firstName: "",
         lastName: ""
     });
+    const [error, setError] = useState([]);
     function handleChange(evt) {
         const { name, value } = evt.target;
-        setSignUpForm(data => ({
+        setSignUpFormData(data => ({
             ...data,
             [name]: value
         }));
     }
-    function handleSubmit(evt) {
+    async function handleSubmit(evt) {
         evt.preventDefault();
-        let { ...data } = signUpForm;
-        console.log(data);
-        setSignUpForm(data);
+        let result = await signUp(signUpFormData);
+        if (result.success) {
+            history.push('/companies');
+        }
+        else {
+            setError(result.error);
+            console.log(error);
+        }
     }
     return (
         <div className="LoginCard">
@@ -33,31 +41,31 @@ function SignUp() {
                     <input placeholder="Username"
                         name="username"
                         type="text"
-                        value={signUpForm.username}
+                        value={signUpFormData.username}
                         onChange={handleChange} />
                     <Label htmlFor="password">Password<small>*</small> </Label>
                     <input placeholder="Password"
                         name="password"
                         type="text"
-                        value={signUpForm.password}
+                        value={signUpFormData.password}
                         onChange={handleChange} />
                     <Label htmlFor="email">Email<small>*</small> </Label>
                     <input placeholder="Email"
                         name="email"
                         type="text"
-                        value={signUpForm.email}
+                        value={signUpFormData.email}
                         onChange={handleChange} />
                     <Label htmlFor="firstName">FirstName<small>*</small> </Label>
                     <input placeholder="FirstName"
                         name="firstName"
                         type="text"
-                        value={signUpForm.firstName}
+                        value={signUpFormData.firstName}
                         onChange={handleChange} />
                     <Label htmlFor="lastName">LastName<small>*</small></Label>
                     <input placeholder="LastName"
                         name="lastName"
                         type="text"
-                        value={signUpForm.lastName}
+                        value={signUpFormData.lastName}
                         onChange={handleChange} />
 
                     <Button className="Loginbtn" color="primary" size="lg">SignUp</Button>

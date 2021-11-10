@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useHistory } from "react-router";
 import { Button, Form, FormGroup, Label } from 'reactstrap';
 import './LoginForm.css';
 
-function Login() {
-
+function Login({ login }) {
+    const history = useHistory();
     const [loginForm, setLoginForm] = useState({
         username: "",
         password: ""
     });
+    const [error, setError] = useState([]);
     function handleChange(evt) {
         const { name, value } = evt.target;
         setLoginForm(data => ({
@@ -15,11 +17,19 @@ function Login() {
             [name]: value
         }));
     }
-    function handleSubmit(evt) {
+    async function handleSubmit(evt) {
         evt.preventDefault();
-        let { ...data } = loginForm;
-        console.log(data);
-        setLoginForm(data);
+        let result = await login(loginForm);
+        console.log(`INSIDE login ${JSON.stringify(result.success)}`)
+        if (result) {
+            console.log("RENDERING TO COMPANIES")
+            history.push("/companies");
+        }
+        else {
+            setError(result.error);
+            console.log(error);
+        }
+
     }
     return (
         <Form className="LoginForm" onSubmit={handleSubmit}>

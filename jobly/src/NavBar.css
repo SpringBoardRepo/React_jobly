@@ -50,3 +50,9 @@ nav a.active.navbar-brand {
 nav a:not(.navbar-brand):hover {
   font-weight: bold;
 }
+
+.LogoutNav {
+  display: inline-block;
+  margin-left: 75rem;
+  font-weight: bold;
+}
