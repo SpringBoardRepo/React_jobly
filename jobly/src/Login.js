@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Label } from 'reactstrap';
 import './LoginForm.css';
 
 function Login({ login }) {
-    const history = useHistory();
+    let history = useHistory();
     const [loginForm, setLoginForm] = useState({
         username: "",
         password: ""
@@ -20,9 +20,9 @@ function Login({ login }) {
     async function handleSubmit(evt) {
         evt.preventDefault();
         let result = await login(loginForm);
-        console.log(`INSIDE login ${JSON.stringify(result.success)}`)
+        console.log(`INSIDE login ${JSON.stringify(result)}`)
         if (result) {
-            console.log("RENDERING TO COMPANIES")
+            console.log("RENDERING TO COMPANIES");
             history.push("/companies");
         }
         else {

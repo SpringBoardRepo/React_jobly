@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Routes } from 'react-router-dom';
 import NavBar from './Navbar';
 import './App.css';
-import Routes from './Routes';
+import RoutesComponents from './RoutesComponents';
 import JoblyApi from './api';
 import UserContext from './UserContext';
 import jwt from "jsonwebtoken";
@@ -16,7 +16,7 @@ function App() {
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
   const [currentUser, setCurrentUser] = useState(null);
   const [userInfo, setUserInfo] = useState(false);
-
+  const [applicationIds, setApplicationIds] = useState(new Set([]));
   //load user info from Api if user has the token 
 
   useEffect(function loadUserInfo() {
@@ -28,6 +28,7 @@ function App() {
           JoblyApi.token = token;
           let currentUser = await JoblyApi.getCurrentUser(user.username);
           setCurrentUser(currentUser);
+          setApplicationIds(new Set(currentUser.applications));
         } catch (error) {
           console.log(error);
           setCurrentUser(null);
@@ -66,18 +67,27 @@ function App() {
     setCurrentUser(null);
     setToken(null);
   }
-
+  /** Checks if a job has been applied for. */
+  function hasAppliedToJob(id) {
+    return applicationIds.has(id);
+  }
+  function applyToJob(id) {
+    if (hasAppliedToJob(id)) return;
+    JoblyApi.applyForJob(currentUser.username, id);
+    setApplicationIds(new Set([...applicationIds, id]));
+  }
+  console.log(`In APP JS CurrentUSer ${currentUser} `);
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
         <UserContext.Provider
-          value={{ currentUser, setCurrentUser }}>
+          value={{ currentUser, setCurrentUser, hasAppliedToJob, applyToJob }}>
           <main>
             <NavBar logout={logout} />
-            <Routes login={login} signUp={signUp} />
+            <RoutesComponents login={login} signUp={signUp} />
           </main>
         </UserContext.Provider>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
