@@ -1,25 +1,40 @@
 
+import { useContext, useEffect, useState } from 'react';
 import { Card, CardText, CardBody, CardTitle, Button } from 'reactstrap';
 import "./JobCard.css";
+import UserContext from './UserContext';
 
-function JobCard({ jobList }) {
+function JobCard({ id, title, salary, equity, companyHandle }) {
+
+    const { hasAppliedToJob, applyToJob } = useContext(UserContext);
+    const [applied, setApplied] = useState();
+
+    useEffect(function updateApplyStatus() {
+
+        setApplied(hasAppliedToJob(id));
+    }, [id, hasAppliedToJob]);
+
+    async function handleApply(evt) {
+        if (hasAppliedToJob(id)) return;
+        applyToJob(id);
+        setApplied(true);
+    }
 
     return (
-
         <div>
-            {jobList.map(job => (
-                <Card className="JobCard" key={job.id}>
-                    <CardBody>
-                        <CardTitle className="CardTitle">{job.title}</CardTitle>
-                        <CardText>
-                            <b> {job.companyHandle}</b>
-                            <p>Salary : {job.salary}</p>
-                            <p>Equity : {job.equity}</p>
-                        </CardText>
-                    </CardBody>
-                    <Button className="applyBtn danger" size="lg">Apply</Button>
-                </Card>
-            ))}
+
+            <Card className="JobCard" key={id} id={id}>
+                <CardBody>
+                    <CardTitle className="CardTitle">{title}</CardTitle>
+                    <CardText>
+                        <b> {companyHandle}</b>
+                        <p>Salary : {salary}</p>
+                        <p>Equity : {equity}</p>
+                    </CardText>
+                </CardBody>
+                <Button className="applyBtn danger" size="lg" onClick={handleApply} disabled={applied}>
+                    {applied ? "Applied" : "Apply"}</Button>
+            </Card>
 
         </div>
 

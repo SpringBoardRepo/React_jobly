@@ -9,7 +9,6 @@ function JobsList() {
     useEffect(() => {
         async function getJobsList() {
             const response = await JoblyApi.getJobsList();
-            console.log(response);
             setJList(response.jobs);
 
         }
@@ -17,7 +16,17 @@ function JobsList() {
     }, []);
     return (
         <>
-            <JobCard jobList={jList} />
+            {jList.map(job => (
+                <JobCard
+                    key={job.id}
+                    id={job.id}
+                    title={job.title}
+                    salary={job.salary}
+                    equity={job.equity}
+                    companyHandle={job.companyHandle}
+
+                />
+            ))}
 
         </>
     )
