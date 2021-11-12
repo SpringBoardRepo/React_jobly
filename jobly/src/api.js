@@ -45,9 +45,9 @@ class JoblyApi {
         return res;
     }
     //Get all the jobs
-    static async getJobsList() {
+    static async getJobsList(title) {
 
-        let res = await this.request('jobs');
+        let res = await this.request('jobs', { title });
         return res;
     }
 
@@ -79,7 +79,7 @@ class JoblyApi {
     // Apply for jobs
 
     static async applyForJob(username, id) {
-        let res = await this.request(`/users/${username}/jobs/${id}`, {}, "post");
+        let res = await this.request(`users/${username}/jobs/${id}`, {}, "post");
     }
 }
 

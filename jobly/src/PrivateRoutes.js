@@ -7,10 +7,10 @@ import UserContext from "./UserContext";
 function PrivateRoutes({ exact, path, children }) {
 
     const { currentUser } = useContext(UserContext);
-    console.log(currentUser);
-    // if (!currentUser) {
-    //     return <Redirect to="/login" />
-    // }
+    console.log(`IN PRIVATE ROUTE ${currentUser}`);
+    if (!currentUser) {
+        return <Redirect to="/login" />
+    }
     return (
         <Route exact={exact} path={path}>
             {children}

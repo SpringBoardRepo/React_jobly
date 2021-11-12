@@ -1,22 +1,11 @@
-import JoblyApi from "./api";
-import { useEffect, useState } from "react"
+
 import JobCard from "./JobCard";
 
-function JobsList() {
+function JobsList({ jobList }) {
 
-    const [jList, setJList] = useState([]);
-
-    useEffect(() => {
-        async function getJobsList() {
-            const response = await JoblyApi.getJobsList();
-            setJList(response.jobs);
-
-        }
-        getJobsList();
-    }, []);
     return (
         <>
-            {jList.map(job => (
+            {jobList.map(job => (
                 <JobCard
                     key={job.id}
                     id={job.id}

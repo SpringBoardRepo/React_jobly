@@ -23,14 +23,16 @@ function JobCard({ id, title, salary, equity, companyHandle }) {
     return (
         <div>
 
-            <Card className="JobCard" key={id} id={id}>
+            <Card className="JobCard" key={id} id={id}>{applied}
                 <CardBody>
                     <CardTitle className="CardTitle">{title}</CardTitle>
-                    <CardText>
+                    <span>
                         <b> {companyHandle}</b>
-                        <p>Salary : {salary}</p>
-                        <p>Equity : {equity}</p>
-                    </CardText>
+                        <span>
+                            <p>Salary : {salary}</p>
+                            <p>Equity : {equity}</p>
+                        </span>
+                    </span>
                 </CardBody>
                 <Button className="applyBtn danger" size="lg" onClick={handleApply} disabled={applied}>
                     {applied ? "Applied" : "Apply"}</Button>

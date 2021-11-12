@@ -13,7 +13,7 @@ nav {
   list-style: none;
 
   flex-direction: column;
-  text-align: right;
+  float: right;
 }
 .nav-item {
   text-align: right;
@@ -52,7 +52,8 @@ nav a:not(.navbar-brand):hover {
 }
 
 .LogoutNav {
-  display: inline-block;
+  /* display: inline-block;
   margin-left: 75rem;
-  font-weight: bold;
+  font-weight: bold; */
+  float: right;
 }

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Alert, Button, Label } from "reactstrap";
 import JoblyApi from "./api";
 import UserContext from "./UserContext";
+import "./Profile.css"
 
 function Profile() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -59,7 +60,7 @@ function Profile() {
             <div className="cardBody">
                 <form className="LoginForm" onSubmit={handleSubmit}>
                     <Label htmlFor="username"> Username<small>*</small></Label>
-                    <p>{formData.username}</p>
+                    <p className="userName">{formData.username}</p>
                     <Label htmlFor="firstName">FirstName<small>*</small> </Label>
                     <input placeholder="FirstName"
                         name="firstName"
