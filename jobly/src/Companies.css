@@ -1,0 +1,18 @@
+.companies {
+  text-align: center;
+}
+.companies input {
+  width: 40%;
+  height: 40px;
+  margin-left: 18rem;
+}
+
+button {
+  text-align: center;
+  color: white;
+  background-color: rgb(66, 182, 218);
+  border: none;
+  width: 5rem;
+  height: 3rem;
+  border-radius: 10px;
+}
